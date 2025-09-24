@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora Sencilla</title>
+  <style>
+    :root{
+      --bg:#f6f7f9;
+      --card:#ffffff;
+      --text:#1f2328;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#2b74ff;
+      --radius:12px;
+    }
+    * { box-sizing:border-box }
+    body{
+      margin:0;
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      display:grid; place-items:center;
+      min-height:100svh; padding:24px;
+    }
+    .card{
+      width:min(420px, 100%);
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 1px 2px rgba(0,0,0,.04);
+    }
+    h1{
+      font-size:clamp(1.15rem, 1rem + 1vw, 1.5rem);
+      margin:0 0 6px;
+      font-weight:650;
+    }
+    .lead{ margin:0 0 16px; color:var(--muted); font-size:.95rem; }
+    .grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    @media (max-width:560px){ .grid{ grid-template-columns:1fr; } }
+
+    label{ display:block; font-size:.9rem; color:#374151; margin:0 0 6px; }
+    input, select, button{
+      width:100%;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      color:var(--text);
+      font: inherit;
+    }
+    input::placeholder{ color:#9aa1aa; }
+    input:focus, select:focus, button:focus{
+      outline:2px solid color-mix(in srgb, var(--accent) 35%, #ffffff 65%);
+      outline-offset:2px;
+    }
+    .row{ display:grid; grid-template-columns:1fr auto; gap:12px; align-items:end; }
+    @media (max-width:560px){ .row{ grid-template-columns:1fr; } }
+
+    button{
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      font-weight:600;
+      cursor:pointer;
+      transition:opacity .15s ease;
+      padding:10px 14px;
+    }
+    button:hover{ opacity:.92; }
+
+    .result{
+      margin-top:14px;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fafafa;
+      min-height:44px;
+      display:flex; align-items:center;
+    }
+    .foot{ margin-top:8px; color:var(--muted); font-size:.88rem; }
+    .kbd{ font-family:ui-monospace, SFMono-Regular, Menlo, monospace; background:#f0f2f5; border:1px solid var(--line); padding:1px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <h1>Calculadora Sencilla</h1>
+
+  <input id="num1" type="number" placeholder="Primer número">
+  <input id="num2" type="number" placeholder="Segundo número">
+
+  <select id="operacion">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <p id="resultado">Resultado: </p>
+
+  <script src="script.js"></script>
+</body>
+</html>
